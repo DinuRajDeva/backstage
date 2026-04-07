@@ -42,10 +42,10 @@ backend:
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
     client: pg
     connection:
-      host: postgres-db
+      host: database-1.ccd6aouhipsz.ap-south-1.rds.amazonaws.com
       port: 5432
-      user: admin
-      password: '12345'
+      user: postgres
+      password: 'Password12345'
 integrations:
   github:
     - host: github.com
