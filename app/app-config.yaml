@@ -12,7 +12,7 @@ app:
           path: /
 
 organization:
-  name: Litmus&
+  name: Litmus7
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
