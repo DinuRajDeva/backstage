@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  backstage:
+    image: backstage:latest
+    container_name: backstage-app
+
+    ports:
+      - "7007:7007"
+
+    # environment:
+    #   NODE_ENV: production
+
+    #   # Match your existing Postgres container
+    #   POSTGRES_HOST: postgres
+    #   POSTGRES_PORT: 5432
+    #   POSTGRES_USER: postgres
+    #   POSTGRES_PASSWORD: postgres
+    #   POSTGRES_DB: backstage
+
+    volumes:
+      # Optional: mount config if not baked into the image
+      # - ./app-config.yaml:/app/app-config.yaml
+      - ./app:/app
+      #- ./app/app-config.yaml:/app/app-config.yaml
+    # command:
+    #   - node
+    #   - packages/backend
+    #   - --config
+    #   - /app/app-config.yaml
+
+    networks:
+      - postgres_network
+
+    restart: unless-stopped
+
+# Use existing Docker network (e.g. from a separate Postgres stack)
+networks:
+  postgres_network:
+    external: true
+    name: postgres_default
