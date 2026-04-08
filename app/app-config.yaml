@@ -45,7 +45,10 @@ backend:
       host: database-1.ccd6aouhipsz.ap-south-1.rds.amazonaws.com
       port: 5432
       user: postgres
+      database: postgres
       password: 'Password12345'
+      ssl:
+        require: true      
 integrations:
   github:
     - host: github.com
