@@ -1,6 +1,7 @@
 app:
   title: Scaffolded Backstage App
-  baseUrl: http://localhost:3000
+  # Browser origin: ECS/LB → https://your-alb-dns (same host as API). Local yarn → http://localhost:3000
+  baseUrl: ${BACKSTAGE_APP_BASE_URL}
 
   # Enable all packages by default, this will discover packages from packages/app/package.json
   packages: all
@@ -21,7 +22,8 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
-  baseUrl: http://localhost:7007
+  # URL the browser uses for /api/* (ECS/LB → same as app.baseUrl). Local yarn → http://localhost:7007
+  baseUrl: ${BACKSTAGE_BACKEND_BASE_URL}
   listen:
     port: 7007
     # Uncomment the following host directive to bind to specific interfaces
@@ -31,7 +33,7 @@ backend:
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
-    origin: http://localhost:3000
+    origin: ${BACKSTAGE_APP_BASE_URL}
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   # This is for local development only, it is not recommended to use this in production

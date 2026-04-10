@@ -8,15 +8,17 @@ services:
     ports:
       - "7007:7007"
 
-    # environment:
-    #   NODE_ENV: production
-
-    #   # Match your existing Postgres container
-    #   POSTGRES_HOST: postgres
-    #   POSTGRES_PORT: 5432
-    #   POSTGRES_USER: postgres
-    #   POSTGRES_PASSWORD: postgres
-    #   POSTGRES_DB: backstage
+    environment:
+      # Match how you open Backstage (single port in this compose file).
+      BACKSTAGE_APP_BASE_URL: http://localhost:7007
+      BACKSTAGE_BACKEND_BASE_URL: http://localhost:7007
+      # Used by node-pg when connection.ssl is omitted. With ssl in app-config*, yaml wins.
+      PGSSLMODE: no-verify
+      # Uncomment if app-config.production.yaml uses ${POSTGRES_*} placeholders:
+      # POSTGRES_HOST: database-1.xxx.rds.amazonaws.com
+      # POSTGRES_PORT: "5432"
+      # POSTGRES_USER: postgres
+      # POSTGRES_PASSWORD: secret
 
     volumes:
       # Optional: mount config if not baked into the image
