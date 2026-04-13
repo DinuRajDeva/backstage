@@ -54,7 +54,10 @@ backend:
         # TLS verification fails (e.g. corporate proxy, or Node lacks RDS CA). For production,
         # prefer: download https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem and set
         # ssl.ca: { $file: ./path/to/global-bundle.pem } instead of disabling verification.
-        rejectUnauthorized: false
+        rejectUnauthorized: true
+        ca:
+          $file: global-bundle.pem
+  #    rejectUnauthorized: true        
 integrations:
   github:
     - host: github.com
