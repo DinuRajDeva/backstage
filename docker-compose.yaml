@@ -9,9 +9,7 @@ services:
       - "7007:7007"
 
     environment:
-      # Match how you open Backstage (single port in this compose file).
-      BACKSTAGE_APP_BASE_URL: http://localhost:7007
-      BACKSTAGE_BACKEND_BASE_URL: http://localhost:7007
+      # Base URLs come from app/app-config.production.yaml when NODE_ENV=production (see Dockerfile).
       # Used by node-pg when connection.ssl is omitted. With ssl in app-config*, yaml wins.
       PGSSLMODE: no-verify
       # Uncomment if app-config.production.yaml uses ${POSTGRES_*} placeholders:
