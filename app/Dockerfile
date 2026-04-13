@@ -30,6 +30,7 @@ WORKDIR /app
 COPY --chown=node:node .yarn ./.yarn
 COPY --chown=node:node .yarnrc.yml ./
 COPY --chown=node:node backstage.json ./
+COPY --chown=node:node global-bundle.pem ./
 
 # This switches many Node.js dependencies to production mode.
 ENV NODE_ENV=production
