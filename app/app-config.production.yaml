@@ -1,14 +1,14 @@
 app:
-  # Public URL for ECS + internet ALB (no trailing slash). Use http:// if the ALB has no HTTPS listener.
-  baseUrl: https://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
+  # HTTP :80 on ALB, ELB hostname only (no custom domain). No trailing slash.
+  baseUrl: http://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
 
 backend:
-  baseUrl: https://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
+  baseUrl: http://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
   # The listener can also be expressed as a single <host>:<port> string. In this case we bind to
   # all interfaces, the most permissive setting. The right value depends on your specific deployment.
   listen: ':7007'
   cors:
-    origin: https://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
+    origin: http://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
 

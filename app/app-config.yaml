@@ -1,7 +1,7 @@
 app:
   title: Scaffolded Backstage App
-  # Deployment (internet ALB). For local dev, add app/app-config.local.yaml (gitignored) overriding app.baseUrl / backend.baseUrl / backend.cors.origin to localhost URLs.
-  baseUrl: https://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
+  # Deployment: HTTP on ALB port 80, raw ELB DNS (no custom domain). Do not use https:// here unless the ALB has TLS.
+  baseUrl: http://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
 
   # Enable all packages by default, this will discover packages from packages/app/package.json
   packages: all
@@ -23,7 +23,7 @@ backend:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
   # Same host as app.baseUrl when UI and API are served together (typical ECS + ALB).
-  baseUrl: https://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
+  baseUrl: http://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
   listen:
     port: 7007
     # Uncomment the following host directive to bind to specific interfaces
@@ -33,7 +33,7 @@ backend:
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
-    origin: https://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
+    origin: http://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   # This is for local development only, it is not recommended to use this in production
