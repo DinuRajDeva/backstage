@@ -1,14 +1,14 @@
 app:
   # HTTP :80 on ALB, ELB hostname only (no custom domain). No trailing slash.
-  baseUrl: http://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
+  baseUrl: <>
 
 backend:
-  baseUrl: http://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
+  baseUrl: <>
   # The listener can also be expressed as a single <host>:<port> string. In this case we bind to
   # all interfaces, the most permissive setting. The right value depends on your specific deployment.
   listen: ':7007'
   cors:
-    origin: http://alo-backstage-alb-368988768.ap-south-1.elb.amazonaws.com
+    origin: <>
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
 
